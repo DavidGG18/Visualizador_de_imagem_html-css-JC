@@ -1,0 +1,59 @@
+
+<html>
+<body bgcolor="black";  
+
+<head>
+    <title>Visualizador de Imagem</title>
+    
+    <!-- css -->
+    <style>
+           h1 {
+            font-size: 34px; /* Tamanho da fonte desejado */
+            color: white;    /* Cor desejada, você pode substituir por outra cor */
+            text-align: center; /* Alinhamento desejado, por exemplo, ao centro */
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+       
+    </style>
+</head>
+
+<body>
+   
+    <H1> Visualizador de imagem </H1>
+
+       <label for="campofilmefavorito">Cole o endereço da imagem:</label>
+        <input type="text" id="campofilmefavorito" size="40" placeholder=" Insira o endereço da imagem ">
+    <button onclick="adicionarfilme()">Exibir Imagem</button>
+    <div id="filme"></div>
+   
+   
+    <!-- Java script -->
+   <script>
+  
+  
+   function adicionarfilme() {
+       var campofilmefavorito = document.getElementById("campofilmefavorito").value;
+       var filme = document.getElementById("filme"); 
+   
+       if (campofilmefavorito) {
+           const img = new Image();
+           img.src = campofilmefavorito;
+           img.onload = function() {
+               filme.innerHTML = ""; // Limpar o conteúdo anterior, se houver.
+               filme.appendChild(img);
+           };
+           img.onerror = function() {
+               filme.innerHTML = "Erro ao carregar a imagem.";
+           };
+       } else {
+           filme.innerHTML = "URL inválida.";
+       }
+   }
+
+  
+    </script>
+</body>
+</html>
